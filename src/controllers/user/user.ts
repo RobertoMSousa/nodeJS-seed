@@ -10,8 +10,6 @@ const request = require("express-validator");
 
 
 
-
-
 /**
  * GET /account
  * Profile page.
