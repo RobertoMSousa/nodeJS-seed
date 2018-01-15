@@ -32,7 +32,7 @@ export let postUpdateProfile = (req: Request, res: Response, next: NextFunction)
 
 	if (errors) {
 		req.flash("errors", errors);
-		return res.redirect("/account");
+		return res.redirect("/user/account");
 	}
 
 	User.findById(req.user.id, (err, user: UserModel) => {
@@ -46,12 +46,12 @@ export let postUpdateProfile = (req: Request, res: Response, next: NextFunction)
 			if (err) {
 				if (err.code === 11000) {
 					req.flash("errors", { msg: "The email address you have entered is already associated with an account." });
-					return res.redirect("/account");
+					return res.redirect("/user/account");
 				}
 				return next(err);
 			}
 			req.flash("success", { msg: "Profile information has been updated." });
-			res.redirect("/account");
+			res.redirect("/user/account");
 		});
 	});
 };
@@ -68,7 +68,7 @@ export let postUpdatePassword = (req: Request, res: Response, next: NextFunction
 
 	if (errors) {
 		req.flash("errors", errors);
-		return res.redirect("/account");
+		return res.redirect("/user/account");
 	}
 
 	User.findById(req.user.id, (err, user: UserModel) => {
@@ -77,7 +77,7 @@ export let postUpdatePassword = (req: Request, res: Response, next: NextFunction
 		user.save((err: WriteError) => {
 			if (err) { return next(err); }
 			req.flash("success", { msg: "Password has been changed." });
-			res.redirect("/account");
+			res.redirect("/user/account");
 		});
 	});
 };
@@ -108,7 +108,7 @@ export let getOauthUnlink = (req: Request, res: Response, next: NextFunction) =>
 		user.save((err: WriteError) => {
 			if (err) { return next(err); }
 			req.flash("info", { msg: `${provider} account has been unlinked.` });
-			res.redirect("/account");
+			res.redirect("/user/account");
 		});
 	});
 };
