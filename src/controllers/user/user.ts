@@ -31,7 +31,6 @@ export let postUpdateProfile = (req: Request, res: Response, next: NextFunction)
 	const errors = req.validationErrors();
 
 	if (errors) {
-		req.flash("errors", errors);
 		return res.redirect("/user/account");
 	}
 
@@ -45,12 +44,10 @@ export let postUpdateProfile = (req: Request, res: Response, next: NextFunction)
 		user.save((err: WriteError) => {
 			if (err) {
 				if (err.code === 11000) {
-					req.flash("errors", { msg: "The email address you have entered is already associated with an account." });
 					return res.redirect("/user/account");
 				}
 				return next(err);
 			}
-			req.flash("success", { msg: "Profile information has been updated." });
 			res.redirect("/user/account");
 		});
 	});
@@ -67,7 +64,6 @@ export let postUpdatePassword = (req: Request, res: Response, next: NextFunction
 	const errors = req.validationErrors();
 
 	if (errors) {
-		req.flash("errors", errors);
 		return res.redirect("/user/account");
 	}
 
@@ -76,7 +72,6 @@ export let postUpdatePassword = (req: Request, res: Response, next: NextFunction
 		user.password = req.body.password;
 		user.save((err: WriteError) => {
 			if (err) { return next(err); }
-			req.flash("success", { msg: "Password has been changed." });
 			res.redirect("/user/account");
 		});
 	});
@@ -90,7 +85,6 @@ export let postDeleteAccount = (req: Request, res: Response, next: NextFunction)
 	User.remove({ _id: req.user.id }, (err) => {
 		if (err) { return next(err); }
 		req.logout();
-		req.flash("info", { msg: "Your account has been deleted." });
 		res.redirect("/");
 	});
 };
@@ -107,7 +101,6 @@ export let getOauthUnlink = (req: Request, res: Response, next: NextFunction) =>
 		user.tokens = user.tokens.filter((token: AuthToken) => token.kind !== provider);
 		user.save((err: WriteError) => {
 			if (err) { return next(err); }
-			req.flash("info", { msg: `${provider} account has been unlinked.` });
 			res.redirect("/user/account");
 		});
 	});
