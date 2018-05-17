@@ -13,12 +13,14 @@ logs
 results
 tmp
 
-#Build
+# Build
 public/css/main.css
 
+# Coverage reports
+coverage
+
 # API keys and secrets
-.env.local
-src/config/config.local.json
+.env
 
 # Dependency directory
 node_modules
@@ -34,3 +36,6 @@ Thumbs.db
 
 # Ignore built ts files
 dist/**/*
+
+# Ignore output from coverage report
+coverage
