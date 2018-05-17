@@ -1,12 +1,11 @@
-
 import express = require("express");
-import UserCtrl = require("./home");
+import HomeCtrl = require("./home");
 
 export namespace Routes {
 	export function home(): express.Router {
 		const router = express.Router();
 		router.route("/")
-			.get(UserCtrl.index);
+			.get(HomeCtrl.index);
 
 		return router;
 	}
