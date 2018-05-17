@@ -16,13 +16,13 @@
 
 ## Details
 ### Name
-NodeJS Seed
+Node JS Seed
 
 ### Description
-This is a basic seed inspired by the Microsoft repository but with some particular changes on the file structure to make easier the development.
+
 
 ### Author
-Roberto Sousa
+Roberto Sousa <betos.sousa22@gmail.com>
 
 
 ## Requirements
@@ -45,35 +45,31 @@ mongod
 yarn develop
 ```
 
-Navigate to `http://localhost:3000`
+Navigate to `http://localhost:8080`
 
 ##Build
 | Yarn Script | Description |
 | ------------------------- | ------------------------------------------------------------------------------------------------- |
 | `start`                   | Does the same as 'npm run serve'. Can be invoked with `npm start`                                 |
-| `build`                   | Full build. Runs ALL build tasks (`build-sass`, `build-ts`, `tslint`, `copy-static-assets`)       |
+| `build`                   | Full build. Runs ALL build tasks (`build-ts`, `tslint`)                                           |
 | `serve`                   | Runs node on `dist/server.js` which is the apps entry point                                       |
-| `watch`                   | Runs all watch tasks (TypeScript, Sass, Node). Use this if you're not touching static assets.     |
+| `watch`                   | Runs all watch tasks (TypeScript, Node). Use this if you're not touching static assets.           |
 | `test`                    | Runs tests using Jest test runner                                                                 |
 | `build-ts`                | Compiles all source `.ts` files to `.js` files in the `dist` folder                               |
 | `watch-ts`                | Same as `build-ts` but continuously watches `.ts` files and re-compiles when needed               |
-| `build-sass`              | Compiles all `.scss` files to `.css` files                                                        |
-| `watch-sass`              | Same as `build-sass` but continuously watches `.scss` files and re-compiles when needed           |
 | `tslint`                  | Runs TSLint on project files                                                                      |
-| `copy-static-assets`      | Calls script that copies JS libs, fonts, and images to dist directory                             |
 | `develop`                 | Start the project with the dev options on                                                         |
 
 
 ## Testing
-For this project, I chose [Jest](https://facebook.github.io/jest/) as our test framework.
-While Mocha is probably more common, Mocha seems to be looking for a new maintainer and setting up TypeScript testing in Jest is wicked simple.
+To run the tests just run `yarn test` and it will run then and generate a report that can be checked here `~/coverage/lcov-report/index.html`
 
 ## Support
-Please [open an issue](<place link here>) for support.
+Please [open an issue]() for support.
 
 ## Credits
 This repository was created based on the Microsoft repository provided [here](https://github.com/Microsoft/TypeScript-Node-Starter).
 
 ## Suggestions
 - [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint)
-- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- [Import Cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost)
